@@ -46,6 +46,22 @@ p {
   margin: 0;
   max-width: 510px;
 }
+
+/* Button Styles Start */
+.btn {
+  margin: 15px 0 0 0;
+  width: auto;
+  padding: 3px 10px;
+  border-radius: 5px;
+  background-color: var(--primary);
+  font: bold;
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+}
+/* Button Styles End */
 /* GENERAL STYLES END */
 
 /* SECTIONS START */
