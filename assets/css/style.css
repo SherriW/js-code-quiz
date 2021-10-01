@@ -65,7 +65,7 @@ p {
 /* GENERAL STYLES END */
 
 /* SECTIONS START */
-/* Main Starts */
+/* Main Styles Start */
 .main {
   border: 2px solid black;
   border-radius: 6px;
@@ -78,18 +78,26 @@ p {
   font-size: 1.0rem;
   color: var(--dark);
 }
-/* Main Ends */
+/* Main Styles End */
 
-
+/* Content Sections Styles Start */
+.content {
+  justify-content: center;
+  text-align: center;
+  padding: 0 25px;
+}
+/* Content Sections Styles End */
 
 /* MEDIA QUERIES START */
+/* Minimum Screen Width 980px */
 @media screen and (min-width: 980px) {
   .main {
     margin: 5px auto;
   }
-  }
-  
-  @media screen and (max-width: 575px) {
+}
+
+/* Maximum Screen Width 575px */
+@media screen and (max-width: 575px) {
   .flex {
     flex-direction: column;
   }
@@ -97,4 +105,4 @@ p {
     justify-content: center;
     margin: 10% auto;
   }
-  }
+}
