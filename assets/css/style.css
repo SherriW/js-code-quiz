@@ -1,0 +1,22 @@
+/* GLOBAL STYLES START */
+/* Set Border-Box Start */
+* {
+  box-sizing: border-box;
+}
+/* Set Border-Box End */
+
+/* Root Colors Start */
+:root {
+  /* Primary - intial button(s) color */
+  --primary: rgb(53,28,117);
+  /* Secondary - button(s) color change / view high score links */
+  --secondary: rgb(187, 125, 216); 
+  /* Tertiary - purpose */
+   --tertiary: rgb(216,210,231); 
+  /* Dark - borders / dk font */
+  --dark: black;  
+  /* Light - background / lt font */ 
+  --light: white;
+}
+/* Root Colors End */
+/* GLOBAL STYLES END */
