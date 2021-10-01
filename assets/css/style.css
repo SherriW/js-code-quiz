@@ -20,3 +20,30 @@
 }
 /* Root Colors End */
 /* GLOBAL STYLES END */
+
+/* BODY STYLES START */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* GENERAL STYLES START */
+/* Flex Styles Start */
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  
+}
+/* Flex Styles End */
+
+/* Titles */
+h1 {
+  margin: 10px 0px;
+}
+
+/* Non-Titles */
+p {
+  margin: 0;
+  max-width: 510px;
+}
+/* GENERAL STYLES END */
