@@ -100,6 +100,23 @@ nav a {
 }
 /* Index - Header & Navigation Ends */
 
+/* High Scores Starts */
+.hi-sc {
+  margin: 10% 10%;
+  justify-content: left;
+  max-width: 50%;
+}
+
+.score-list {
+  background-color: var(--tertiary);
+  width: 100%;
+  max-width: 300px;
+  padding: 5px;
+  text-align: left;
+}
+/* High Scores Ends */
+/* BODY ENDS
+
 /* MEDIA QUERIES START */
 /* Minimum Screen Width 980px */
 @media screen and (min-width: 980px) {
