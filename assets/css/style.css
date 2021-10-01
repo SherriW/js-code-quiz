@@ -63,3 +63,22 @@ p {
   color: var(--dark);
 }
 /* Main Ends */
+
+
+
+/* MEDIA QUERIES START */
+@media screen and (min-width: 980px) {
+  .main {
+    margin: 5px auto;
+  }
+  }
+  
+  @media screen and (max-width: 575px) {
+  .flex {
+    flex-direction: column;
+  }
+  .hi-sc {
+    justify-content: center;
+    margin: 10% auto;
+  }
+  }
