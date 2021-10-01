@@ -5,6 +5,9 @@ var quizDoneEl = document.querySelector("done");
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("start-timer");
 
+// Variables: Question index
+var questionNum = 0;
+
 // Variables: Array of questions
 // q: question; opt: options/choices; a: answer
 var questionsArr = [ {
@@ -60,5 +63,7 @@ function countdown() {
   }, 1000);
 }
 
-// Start countdown when start button is clicked
+// BUTTON ACTIONS
+// Start countdown when 'start' button is clicked on start display
 startBtn.onclick = countdown;
+
