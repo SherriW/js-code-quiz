@@ -47,3 +47,19 @@ p {
   max-width: 510px;
 }
 /* GENERAL STYLES END */
+
+/* SECTIONS START */
+/* Main Starts */
+.main {
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: var(--light);
+  max-width: 970px;
+  min-height: 400px;
+  margin: 5px;
+  font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.15;
+  font-size: 1.0rem;
+  color: var(--dark);
+}
+/* Main Ends */
