@@ -1,15 +1,15 @@
-// Variables: Reference DOM Elements
-var startContentEl = document.querySelector("main");
+// VARIABLES
+// variables: reference DOM Elements
+var startContentEl = document.getElementById("start");
 var questionsEl = document.querySelector("questions");
 var quizDoneEl = document.querySelector("done");
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("start-timer");
 
-// Variables: Question index
+// variables: quiz
 var questionNum = 0;
 
-// Variables: Array of questions
-// q: question; opt: options/choices; a: answer
+// variables: Array of questions
 var questionsArr = [ {
   q: "Commonly used data types DO Not Include:",
   opt: ["strings", "booleans", "alerts", "numbers"],
@@ -58,12 +58,49 @@ function countdown() {
       (timeLeft === 0);
       // Use `clearInterval()` to stop the timer
       clearInterval(timeInterval);
-      timerEl.textContent
+      // timerEl.textContent
     }
   }, 1000);
 }
 
-// BUTTON ACTIONS
-// Start countdown when 'start' button is clicked on start display
-startBtn.onclick = countdown;
 
+// Quiz Fuctions
+// Diaplay questions
+// var displayQuestions = function() {
+//   startContent.remove();
+  
+// }
+
+// // Loop over questions
+// for (var i = 0; i < questionsArr.length; i++) {
+//   // Display answer options
+//   var answerButtonEl = document.createElement ("button");
+//   answerButtonEl.className = "btn";
+//   answerButtonEl.setAttribute("id", i);
+//   answerButtonEl.innerText = (i +1) + ". " + questionsArr[questionNum].opt[i];
+  // displayEl.appendChild(answerButtonEl);
+
+  // // Compare answers
+  // if (
+  //   (answer === questions[i].a)
+  // ) {
+  //   // Alert user
+  //   alert('Correct!');
+  // } else {
+  //   alert('Wrong!');
+  // }
+// }
+
+
+// CALL FUNCTIONS
+var btnClick = function(buttonClicks) {
+  var btnEl = buttonClicks.target;
+
+  // start timer countdown and display question page
+  if (btnEl.matches("#start-timer")) {
+    countdown();
+  }
+};
+
+// EVENT LISTENER
+startContentEl.addEventListener("click", btnClick);
