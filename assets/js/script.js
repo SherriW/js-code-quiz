@@ -1,15 +1,13 @@
 // VARIABLES
-// variables: reference DOM Elements
+// Variables: Reference DOM Elements
 var startContentEl = document.getElementById("start");
-var questionsEl = document.querySelector("questions");
-var quizDoneEl = document.querySelector("done");
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("start-timer");
 
-// variables: quiz
+// Variables: Quiz
 var questionNum = 0;
 
-// variables: Array of questions
+// Variables: Array of Questions
 var questionsArr = [ {
   q: "Commonly used data types DO Not Include:",
   opt: ["strings", "booleans", "alerts", "numbers"],
@@ -34,7 +32,8 @@ var questionsArr = [ {
 ];
 
 // FUNCTIONS
-// Timer that counts down based on number of questions & time allowed per question
+// Function: Timer
+// Counts down based on number of questions & time allowed per question
 function countdown() {
   var timeLeft = questionsArr.length * 15;
     // Display start available time 
@@ -63,22 +62,34 @@ function countdown() {
   }, 1000);
 }
 
+// Functions: Questions
+// Display questions
+var displayQuestions = function() {
+  var content = document.querySelector(".content");
 
-// Quiz Fuctions
-// Diaplay questions
-// var displayQuestions = function() {
-//   startContent.remove();
-  
-// }
+  // create elements for questions display
+  qDisplayEl = document.createElement("div");
+  var qTitleEl = document.createElement("h1");
+ 
+  //set element attributes
+  qDisplayEl.className = "q";
+  qDisplayEl.setAttribute("id", "q");
+  qTitleEl.innerText = questionsArr[questionNum].q;
 
-// // Loop over questions
-// for (var i = 0; i < questionsArr.length; i++) {
-//   // Display answer options
-//   var answerButtonEl = document.createElement ("button");
-//   answerButtonEl.className = "btn";
-//   answerButtonEl.setAttribute("id", i);
-//   answerButtonEl.innerText = (i +1) + ". " + questionsArr[questionNum].opt[i];
-  // displayEl.appendChild(answerButtonEl);
+  // append elements
+  content.appendChild(qDisplayEl);
+  qDisplayEl.appendChild(qTitleEl);
+
+  // loop over questions
+  for (var i = 0; i < questionsArr[questionNum].opt.length; i++) {
+    // Display answer options
+    var aBtnEl = document.createElement ("button");
+      aBtnEl.className = "btn";
+      aBtnEl.setAttribute("id", i);
+      aBtnEl.innerText = (i+1) + ". " + questionsArr[questionNum].opt[i];
+    qDisplayEl.appendChild(aBtnEl);
+  }
+};
 
   // // Compare answers
   // if (
@@ -96,8 +107,10 @@ function countdown() {
 var btnClick = function(buttonClicks) {
   var btnEl = buttonClicks.target;
 
-  // start timer countdown and display question page
+  // Clear start display, display question page and start timer countdown
   if (btnEl.matches("#start-timer")) {
+    startContentEl.remove();
+    displayQuestions();
     countdown();
   }
 };
