@@ -47,9 +47,12 @@ p {
   max-width: 510px;
 }
 
+#text {
+  margin: 0 0 15px 0;
+}
+
 /* Button Styles Start */
 .btn {
-  margin: 15px 0 0 0;
   width: auto;
   padding: 3px 10px;
   border-radius: 5px;
@@ -99,6 +102,21 @@ nav a {
   color: var(--secondary);
 }
 /* Index - Header & Navigation Ends */
+
+/* Questions Display Styling - (se JS) */
+.q {
+  text-align: left;
+  max-width: 50%;
+  flex-direction: column;
+}
+
+.qbtn {
+  display: block;
+  width: 100px;
+  text-align: left;
+  margin: 5px;
+}
+/* Questions Display Styling Ends */
 
 /* High Scores Starts */
 .hi-sc {

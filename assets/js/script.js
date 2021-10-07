@@ -84,7 +84,7 @@ var displayQuestions = function() {
   for (var i = 0; i < questionsArr[questionNum].opt.length; i++) {
     // Display answer options
     var aBtnEl = document.createElement ("button");
-      aBtnEl.className = "btn";
+      aBtnEl.className = "btn qbtn";
       aBtnEl.setAttribute("id", i);
       aBtnEl.innerText = (i+1) + ". " + questionsArr[questionNum].opt[i];
     qDisplayEl.appendChild(aBtnEl);
