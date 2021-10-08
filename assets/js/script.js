@@ -83,24 +83,14 @@ var displayQuestions = function() {
   // loop over questions
   for (var i = 0; i < questionsArr[questionNum].opt.length; i++) {
     // Display answer options
-    var aBtnEl = document.createElement ("button");
-      aBtnEl.className = "btn qbtn";
-      aBtnEl.setAttribute("id", i);
-      aBtnEl.innerText = (i+1) + ". " + questionsArr[questionNum].opt[i];
-    qDisplayEl.appendChild(aBtnEl);
+    var optBtnEl = document.createElement ("button");
+      optBtnEl.className = "btn opt-btn";
+      optBtnEl.setAttribute("id", i);
+      optBtnEl.innerText = (i+1) + ". " + questionsArr[questionNum].opt[i];
+    qDisplayEl.appendChild(optBtnEl);
   }
 };
 
-  // // Compare answers
-  // if (
-  //   (answer === questions[i].a)
-  // ) {
-  //   // Alert user
-  //   alert('Correct!');
-  // } else {
-  //   alert('Wrong!');
-  // }
-// }
 
 
 // CALL FUNCTIONS
@@ -112,6 +102,11 @@ var btnClick = function(buttonClicks) {
     startContentEl.remove();
     displayQuestions();
     countdown();
+  }
+
+  // Checks answer based on option clicked
+  else if (btnEl.matches()) {
+    compareAnswers(btnEl);
   }
 };
 

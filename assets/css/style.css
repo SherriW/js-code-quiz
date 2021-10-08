@@ -47,7 +47,7 @@ p {
   max-width: 510px;
 }
 
-#text {
+#b-mrgn {
   margin: 0 0 15px 0;
 }
 
@@ -110,7 +110,7 @@ nav a {
   flex-direction: column;
 }
 
-.qbtn {
+.opt-btn {
   display: block;
   width: 100px;
   text-align: left;
