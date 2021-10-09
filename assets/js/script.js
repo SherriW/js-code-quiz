@@ -6,6 +6,7 @@ var startBtn = document.getElementById("start-timer");
 
 // Variables: Quiz
 var questionNum = 0;
+var timerInterval;
 
 // Variables: Array of Questions
 var questionsArr = [ {
@@ -33,30 +34,30 @@ var questionsArr = [ {
 
 // FUNCTIONS
 // Function: Timer
-// Counts down based on number of questions & time allowed per question
+// counts down based on number of questions & time allowed per question
 function countdown() {
   var timeLeft = questionsArr.length * 15;
-    // Display start available time 
+    // display start available time 
     timerEl.textContent = timeLeft;
 
-  // Call a function to be executed every 1 second
-  var timeInterval = setInterval(function() {
-    // Show remaining seconds if greater than 0
+  // call function to be executed every 1 second
+    timerInterval = setInterval(function() {
+    // show remaining seconds if greater than 0
     if (timeLeft > 0) {
       // Decrement `timeLeft` by 1
       timeLeft--;      
       timerEl.textContent = timeLeft;
 
-    // When last question is done
-    } else if (questionNum === questions.length --) { 
+    // when last question is done
+    } else if (questionNum === questionsArr.length --) { 
       // Use `clearInterval()` to stop the timer
-      clearInterval(timeInterval);
+      clearInterval(timerInterval);
 
-    // When 'timeLeft equals 0 or last question is done
+    // when 'timeLeft equals 0 or last question is done
     } else { 
       (timeLeft === 0);
-      // Use `clearInterval()` to stop the timer
-      clearInterval(timeInterval);
+      // use `clearInterval()` to stop the timer
+      clearInterval(timerInterval);
       // timerEl.textContent
     }
   }, 1000);
@@ -64,7 +65,8 @@ function countdown() {
 
 // Functions: Questions
 // Display questions
-var displayQuestions = function() {
+function displayQuestions() {
+  // variable to reference content section
   var content = document.querySelector(".content");
 
   // create elements for questions display
@@ -94,7 +96,7 @@ var displayQuestions = function() {
 
 
 // CALL FUNCTIONS
-var btnClick = function(buttonClicks) {
+function btnClick(buttonClicks) {
   var btnEl = buttonClicks.target;
 
   // Clear start display, display question page and start timer countdown
