@@ -1,14 +1,14 @@
 // VARIABLES
-// Variables: Reference DOM Elements
+// Reference DOM Elements
+var contentSectionEl = document.querySelector(".content");
 var startContentEl = document.getElementById("start");
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("start-timer");
+var optMsgEl = document.getElementById("option-msg");
 
-// Variables: Quiz
+// Question Variables
 var questionNum = 0;
-var timerInterval;
-
-// Variables: Array of Questions
+//question array variable
 var questionsArr = [ {
   q: "Commonly used data types DO Not Include:",
   opt: ["strings", "booleans", "alerts", "numbers"],
@@ -32,11 +32,14 @@ var questionsArr = [ {
 }
 ];
 
+// Timer Variables
+var timeLeft = questionsArr.length *15;
+var timerInterval;
+var penalty = 15;
+
 // FUNCTIONS
-// Function: Timer
-// counts down based on number of questions & time allowed per question
+// Coundown Timer - based on number of questions & time allowed per question
 function countdown() {
-  var timeLeft = questionsArr.length * 15;
     // display start available time 
     timerEl.textContent = timeLeft;
 
@@ -58,12 +61,13 @@ function countdown() {
       (timeLeft === 0);
       // use `clearInterval()` to stop the timer
       clearInterval(timerInterval);
-      // timerEl.textContent
+
+      // display All Done
+      allDone();
     }
   }, 1000);
-}
+};
 
-// Functions: Questions
 // Display questions
 function displayQuestions() {
   // variable to reference content section
@@ -93,13 +97,61 @@ function displayQuestions() {
   }
 };
 
+// Compare User Option to Answer
+function compareOpt2A(btnEl) {
+  // change id of option button to integer for comparison
+  optNum = parseInt(btnEl.id);
 
+  // look for correct option selection
+  if (optNum === questionsArr[questionNum].a) {
+    // set status of choice for correct
+    choiceStatus = true;
+  }
+  else{
+    // subtract time for wrong answer
+    timeLeft -= 15;
+    console.log(timeLeft);
+
+    // if time left is less than or equal to 0, set to 0 & end
+    if (timeLeft < 0) {
+      timerEl.textContent = 0;
+    }
+    else {
+    // display time left due after penalty 
+    timerEl.textContent = timeLeft;      
+    }
+  
+  // setup to display option selection status
+    // if wrong
+    var choiceStatus = false;
+  //  optMsgEl(choiceStatus);
+  }
+  console.log(choiceStatus);
+  next();
+};
+
+// Next Question
+function next() {
+  // remove last question
+  qDisplayEl.remove();
+
+  // check for next question
+  questionNum++;
+
+  // no questions left, go to All Done display  
+  if (questionNum === questionsArr.length) {
+    allDone();
+  // if questions, continue loop to next question
+  } else {
+    displayQuestions();
+  }
+};
 
 // CALL FUNCTIONS
 function btnClick(buttonClicks) {
   var btnEl = buttonClicks.target;
 
-  // Clear start display, display question page and start timer countdown
+  // remove div/display, start questions & timer
   if (btnEl.matches("#start-timer")) {
     startContentEl.remove();
     displayQuestions();
@@ -107,10 +159,10 @@ function btnClick(buttonClicks) {
   }
 
   // Checks answer based on option clicked
-  else if (btnEl.matches()) {
-    compareAnswers(btnEl);
+  else if (btnEl.matches(".opt-btn")) {
+    compareOpt2A(btnEl);
   }
 };
 
 // EVENT LISTENER
-startContentEl.addEventListener("click", btnClick);
+contentSectionEl.addEventListener("click", btnClick);
