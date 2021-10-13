@@ -160,20 +160,21 @@ var displayMsg = function(choiceStatus) {
       msgTxt = "Wrong!";
     }
 
-  // create element and set attributes for message
-  var footerEl = document.createElement("footer");
+  // create elements and set attributes for message
+  var statusEl = document.createElement("div");
   var optMsgEl = document.createElement("h2");
-  optMsgEl.innerText = msgTxt;
+    optMsgEl.innerText = msgTxt;
   
     // append elements
-    mainSectionEl.appendChild(footerEl);
-    footerEl.appendChild(optMsgEl);
+    contentSectionEl.appendChild(statusEl);
+    statusEl.appendChild(optMsgEl);
 
+    // function ends displaying status by removal
     var endDisplayMsg = function () {
-      footerEl.remove();
+      statusEl.remove();
   }
 
-  // clears correct / wrong after 1 seconds
+  // calls function to stop displaying status, after 1 second of display
   setTimeout(endDisplayMsg, 1000);    
 };
 
