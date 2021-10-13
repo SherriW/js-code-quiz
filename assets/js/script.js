@@ -1,13 +1,14 @@
 // VARIABLES
 // Reference DOM Elements
+var mainSectionEl = document.querySelector("main");
 var contentSectionEl = document.querySelector(".content");
 var startContentEl = document.getElementById("start");
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("start-timer");
-var optMsgEl = document.getElementById("option-msg");
 
 // Question Variables
 var questionNum = 0;
+
 //question array variable
 var questionsArr = [ {
   q: "Commonly used data types DO Not Include:",
@@ -29,40 +30,33 @@ var questionsArr = [ {
   q: "A very useful tool used during development and debugging for printing content to the debugger is:",
   opt: ["JavaScript","terminal/bash","for loops","console.log"],
   a: 3
-}
-];
+} ];
 
 // Timer Variables
 var timeLeft = questionsArr.length *15;
-var timerInterval;
 var penalty = 15;
 
 // FUNCTIONS
 // Coundown Timer - based on number of questions & time allowed per question
 function countdown() {
-    // display start available time 
-    timerEl.textContent = timeLeft;
-
   // call function to be executed every 1 second
-    timerInterval = setInterval(function() {
-    // show remaining seconds if greater than 0
-    if (timeLeft > 0) {
-      // Decrement `timeLeft` by 1
-      timeLeft--;      
+  var timeInterval = setInterval(function() {
+
+    // when last question is done, stops timer and calls All Done
+    if (questionNum === questionsArr.length) {
+      // use 'clearInterval()' to stop the timer
+      clearInterval(timeInterval);
+      allDone();
+    }
+    // time left, decrement by 1
+    else if (timeLeft > 0) {
+      timeLeft--;
       timerEl.textContent = timeLeft;
-
-    // when last question is done
-    } else if (questionNum === questionsArr.length --) { 
-      // Use `clearInterval()` to stop the timer
-      clearInterval(timerInterval);
-
-    // when 'timeLeft equals 0 or last question is done
-    } else { 
-      (timeLeft === 0);
-      // use `clearInterval()` to stop the timer
-      clearInterval(timerInterval);
-
-      // display All Done
+    }
+    // stops timer and sets time left to 0, when reaches 0
+    else{
+      timerEl.textContent = timeLeft;
+      clearInterval(timeInterval);
       allDone();
     }
   }, 1000);
@@ -75,16 +69,16 @@ function displayQuestions() {
 
   // create elements for questions display
   qDisplayEl = document.createElement("div");
-  var qTitleEl = document.createElement("h1");
+  var qh1El = document.createElement("h1");
  
   //set element attributes
   qDisplayEl.className = "q";
   qDisplayEl.setAttribute("id", "q");
-  qTitleEl.innerText = questionsArr[questionNum].q;
+  qh1El.innerText = questionsArr[questionNum].q;
 
   // append elements
   content.appendChild(qDisplayEl);
-  qDisplayEl.appendChild(qTitleEl);
+  qDisplayEl.appendChild(qh1El);
 
   // loop over questions
   for (var i = 0; i < questionsArr[questionNum].opt.length; i++) {
@@ -102,33 +96,24 @@ function compareOpt2A(btnEl) {
   // change id of option button to integer for comparison
   optNum = parseInt(btnEl.id);
 
-  // look for correct option selection
+  // check for correct option selection and track time/score
   if (optNum === questionsArr[questionNum].a) {
     // set status of choice for correct
-    choiceStatus = true;
+    var choiceStatus = true;
+    displayMsg(choiceStatus);
   }
-  else{
+  else {
+    // set status of choice for wrong
+    choiceStatus = false;
+    displayMsg(choiceStatus);    
     // subtract time for wrong answer
     timeLeft -= 15;
-    console.log(timeLeft);
-
-    // if time left is less than or equal to 0, set to 0 & end
-    if (timeLeft < 0) {
-      timerEl.textContent = 0;
-    }
-    else {
     // display time left due after penalty 
     timerEl.textContent = timeLeft;      
-    }
-  
-  // setup to display option selection status
-    // if wrong
-    var choiceStatus = false;
-  //  optMsgEl(choiceStatus);
   }
-  console.log(choiceStatus);
   next();
 };
+// console.log(choiceStatus);
 
 // Next Question
 function next() {
@@ -141,6 +126,7 @@ function next() {
   // no questions left, go to All Done display  
   if (questionNum === questionsArr.length) {
     allDone();
+    displayMsg;
   // if questions, continue loop to next question
   } else {
     displayQuestions();
