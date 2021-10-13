@@ -173,7 +173,7 @@ var displayMsg = function(choiceStatus) {
       footerEl.remove();
   }
 
-  // clears correct / wrong after 0.8 seconds
+  // clears correct / wrong after 1 seconds
   setTimeout(endDisplayMsg, 1000);    
 };
 
