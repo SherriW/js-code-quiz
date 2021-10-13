@@ -150,5 +150,32 @@ function btnClick(buttonClicks) {
   }
 };
 
+// Display Status of User Choice
+var displayMsg = function(choiceStatus) {
+  var msgTxt = choiceStatus
+    
+    if (choiceStatus) {
+      msgTxt = "Correct!";
+    } else {
+      msgTxt = "Wrong!";
+    }
+
+  // create element and set attributes for message
+  var footerEl = document.createElement("footer");
+  var optMsgEl = document.createElement("h2");
+  optMsgEl.innerText = msgTxt;
+  
+    // append elements
+    mainSectionEl.appendChild(footerEl);
+    footerEl.appendChild(optMsgEl);
+
+    var endDisplayMsg = function () {
+      footerEl.remove();
+  }
+
+  // clears correct / wrong after 0.8 seconds
+  setTimeout(endDisplayMsg, 1000);    
+};
+
 // EVENT LISTENER
 contentSectionEl.addEventListener("click", btnClick);
