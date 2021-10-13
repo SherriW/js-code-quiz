@@ -1,42 +1,44 @@
 <!-- Doc Type, Title -->
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript 'Basics' Coding Quiz</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
-  <body>
-    <!-- main starts -->
-    <main class="main"
-      <!-- navigation / timer starts -->
-      <header class="flex">
-        <nav>
-          <a href="high-score.html">View high scores</a>
-        </nav>
-        <!-- navigation ends -->
+  <body class="main">
+    <!-- navigation / timer starts -->
+    <header class="flex">
+      <nav>
+        <a href="high-score.html">View high scores</a>
+      </nav>
+      <!-- navigation ends -->
 
-        <!-- timer - if add questions, change number secs for total at start-->
-        <div>Time: <span id="timer">0</span></div>
-      </header>
-      <!-- navigation / timer ends -->
-  
-      <!-- quiz start -->
-      <section class="content flex">
-        <div id="start">
-          <h1>JavaScript 'Basics' Coding Quiz</h1>
-          <p> Try to answer the following code-related questions within the time limit.</p>
-          <p id="b-mrgn">Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-          <button class="btn" id="start-timer">Start Quiz!</button>
-        </div> 
-      </section>
-    </main>
-    <!-- main ends -->
+      <!-- timer - if add questions, change number secs for total at start-->
+      <div>Time: <span id="timer">0</span></div>
+    </header>
+    <!-- navigation / timer ends -->
+
+    <!-- quiz start -->
+    <section class="content flex">
+      <div id="start">
+        <h1>JavaScript 'Basics' Coding Quiz</h1>
+        <p>
+          Try to answer the following code-related questions within the time
+          limit.
+        </p>
+        <p id="b-mrgn">
+          Keep in mind that incorrect answers will penalize your score/time by
+          ten seconds!
+        </p>
+        <button class="btn" id="start-timer">Start Quiz!</button>
+      </div>
+    </section>
 
     <!-- link to scipt.js -->
-      <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
