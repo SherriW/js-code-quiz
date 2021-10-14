@@ -1,5 +1,6 @@
 // VARIABLES
 // Reference DOM Elements
+var bodyEl = document.querySelector("body");
 var mainSectionEl = document.querySelector("main");
 var contentSectionEl = document.querySelector(".content");
 var startContentEl = document.getElementById("start");
@@ -44,7 +45,6 @@ function countdown() {
 
     // when last question is done, stops timer and calls All Done
     if (questionNum === questionsArr.length) {
-      // use 'clearInterval()' to stop the timer
       clearInterval(timeInterval);
       allDone();
     }
@@ -55,9 +55,9 @@ function countdown() {
     }
     // stops timer and sets time left to 0, when reaches 0
     else{
+      timeLeft === 0;
+      clearInterval(timeInterval);      
       timerEl.textContent = timeLeft;
-      clearInterval(timeInterval);
-      allDone();
     }
   }, 1000);
 };
@@ -108,6 +108,13 @@ function compareOpt2A(btnEl) {
     displayMsg(choiceStatus);    
     // subtract time for wrong answer
     timeLeft -= 15;
+    // display 0 if timeLeft is 0 or less
+    if (timeLeft < 1) {
+    timeLeft = 0;
+    allDone();
+    } else {
+      timeLeft;
+    }
     // display time left due after penalty 
     timerEl.textContent = timeLeft;      
   }
@@ -133,7 +140,32 @@ function next() {
   }
 };
 
-// CALL FUNCTIONS
+// Display Status of User Choice
+var displayMsg = function(choiceStatus) {
+  // set message
+  var msgTxt = choiceStatus
+    if (choiceStatus) {
+      msgTxt = "Correct!";
+    } else {
+      msgTxt = "Wrong!";
+    }
+
+  // create elements and set attributes for message
+  var statusEl = document.createElement("footer");
+  var optMsgEl = document.createElement("h3");
+    optMsgEl.innerText = msgTxt;
+  
+    // append elements
+    bodyEl.appendChild(statusEl);
+    statusEl.appendChild(optMsgEl);
+
+    // function shows message for 1 sec
+    setTimeout(function () {
+      statusEl.remove();
+    }, 1000);  
+};
+
+// CALL BUTTON FUNCTIONS
 function btnClick(buttonClicks) {
   var btnEl = buttonClicks.target;
 
@@ -148,34 +180,6 @@ function btnClick(buttonClicks) {
   else if (btnEl.matches(".opt-btn")) {
     compareOpt2A(btnEl);
   }
-};
-
-// Display Status of User Choice
-var displayMsg = function(choiceStatus) {
-  var msgTxt = choiceStatus
-    
-    if (choiceStatus) {
-      msgTxt = "Correct!";
-    } else {
-      msgTxt = "Wrong!";
-    }
-
-  // create elements and set attributes for message
-  var statusEl = document.createElement("div");
-  var optMsgEl = document.createElement("h2");
-    optMsgEl.innerText = msgTxt;
-  
-    // append elements
-    contentSectionEl.appendChild(statusEl);
-    statusEl.appendChild(optMsgEl);
-
-    // function ends displaying status by removal
-    var endDisplayMsg = function () {
-      statusEl.remove();
-  }
-
-  // calls function to stop displaying status, after 1 second of display
-  setTimeout(endDisplayMsg, 1000);    
 };
 
 // EVENT LISTENER

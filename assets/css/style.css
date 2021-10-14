@@ -1,9 +1,9 @@
 /* GLOBAL STYLES START */
-/* Set Border-Box Start */
+/* Border-Box Styles Start */
 * {
   box-sizing: border-box;
 }
-/* Set Border-Box End */
+/* Border-Box Styles End */
 
 /* Root Colors Start */
 :root {
@@ -27,6 +27,20 @@ body {
   padding: 0;
 }
 
+.main {
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: var(--light);
+  max-width: 970px;
+  min-height: 400px;
+  margin: 5px;
+  font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.15;
+  font-size: 1.0rem;
+  color: var(--dark);
+}
+/* 'BODY' STYLES END */
+
 /* GENERAL STYLES START */
 /* Flex Styles Start */
 .flex {
@@ -36,12 +50,13 @@ body {
 }
 /* Flex Styles End */
 
-/* Titles */
+/* Title Styles Start */
 h1 {
   margin: 10px 0px;
 }
+/* Title Styles End */
 
-/* Non-Titles */
+/* Non-Titles Styles Start */
 p {
   margin: 0;
   max-width: 510px;
@@ -50,6 +65,7 @@ p {
 #b-mrgn {
   margin: 0 0 15px 0;
 }
+/* Non-Titles Styles End
 
 /* Button Styles Start */
 .btn {
@@ -66,31 +82,6 @@ p {
 }
 /* Button Styles End */
 /* GENERAL STYLES END */
-
-/* SECTIONS START */
-/* Main Styles Start */
-.main {
-  border: 2px solid black;
-  border-radius: 6px;
-  background-color: var(--light);
-  max-width: 970px;
-  min-height: 400px;
-  margin: 5px;
-  font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.15;
-  font-size: 1.0rem;
-  color: var(--dark);
-}
-/* Main Styles End */
-
-/* Content Sections Styles Start */
-.content {
-  justify-content: center;
-  text-align: center;
-  padding: 0 25px;
-}
-/* Content Sections Styles End */
-
 /* Index - Header & Navigation Starts */
 header {
   justify-content: space-between;
@@ -103,11 +94,18 @@ nav a {
 }
 /* Index - Header & Navigation Ends */
 
-/* Questions Display Styling - (se JS) */
+/* Content Sections Styles Start */
+.content {
+  justify-content: center;
+  text-align: center;
+  padding: 0 25px;
+}
+/* Content Sections Styles End */
+
+/* Questions Display Styles Start - (se JS) */
 .q {
   text-align: left;
   max-width: 50%;
-  flex-direction: column;
 }
 
 .opt-btn {
@@ -116,9 +114,22 @@ nav a {
   text-align: left;
   margin: 5px;
 }
-/* Questions Display Styling Ends */
 
-/* High Scores Starts */
+/* Questions Display Styles Ends */
+
+/* Footer Display Styles Start */
+footer {
+  max-width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  font-style: italic;
+  border-top: 3px solid lightgray;
+  color: lightgray;
+  text-align: center;
+}
+/* Footer Styles End */
+
+/* High Scores Styles Start */
 .hi-sc {
   margin: 10% 10%;
   justify-content: left;
@@ -132,7 +143,7 @@ nav a {
   padding: 5px;
   text-align: left;
 }
-/* High Scores Ends */
+/* High Scores Styles End */
 /* BODY ENDS
 
 /* MEDIA QUERIES START */
