@@ -74,7 +74,6 @@ function displayQuestions() {
  
   //set element attributes
   qDisplayEl.className = "q";
-  qDisplayEl.setAttribute("id", "q");
   qh1El.innerText = questionsArr[questionNum].q;
 
   // append elements
@@ -163,7 +162,7 @@ var displayMsg = function(choiceStatus) {
       statusEl.remove();
     }, 1000);  
 };
- 
+
 // All Done Display
 function allDone() {
   var content = document.querySelector(".content");
@@ -171,7 +170,6 @@ function allDone() {
 
   // create elements and set attributes
   var doneEl = document.createElement("div");
-    doneEl.className = "done";
     doneEl.setAttribute("id", "done");
   var doneTitleEl = document.createElement("h1");
     doneTitleEl.innerText = "All Done!";
@@ -180,14 +178,13 @@ function allDone() {
   var submitEl = document.createElement("div");
     submitEl.setAttribute("id", "submit")
   var p2El = document.createElement("P");
-    p2El.innerText = "Enter initials: ";
+    p2El.innerText = "Enter initials:";
   var initInpEl = document.createElement("input");
     initInpEl.setAttribute("type", "text");
     initInpEl.setAttribute("id", "initials");
     initInpEl.setAttribute("placeholder", "Your Initials Here!");
     initInpEl.setAttribute("maxlength", "3");
   var submitBtnEl = document.createElement ("button");
-    submitBtnEl.className = "btn submit-btn";
     submitBtnEl.setAttribute("id", "submit-btn");
     submitBtnEl.innerText = "Submit";
 
@@ -195,10 +192,10 @@ function allDone() {
   content.appendChild(doneEl);
   doneEl.appendChild(doneTitleEl);
   doneEl.appendChild(pEl);
-  content.appendChild(submitEl);
+  doneEl.appendChild(submitEl);
   submitEl.appendChild(p2El);
-  submitEl.appendChild(initInpEl);
-  submitEl.appendChild(submitBtnEl);
+  p2El.appendChild(initInpEl);
+  p2El.appendChild(submitBtnEl);
 };
 
 
@@ -217,6 +214,9 @@ function btnClick(buttonClicks) {
   else if (btnEl.matches(".opt-btn")) {
     compareOpt2A(btnEl);
   }
+
+  //
+//  else if (btnEl.matches("#submit-btn"))
 };
 
 // EVENT LISTENER

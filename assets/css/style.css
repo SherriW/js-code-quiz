@@ -127,7 +127,17 @@ footer {
   color: lightgray;
   text-align: center;
 }
+
+footer h3 {
+  text-align: left;
+}
 /* Footer Styles End */
+
+/* All Done Styles Start */
+#initials {
+  margin: 10px;
+}
+/* All Done Styles End */
 
 /* High Scores Styles Start */
 .hi-sc {
@@ -156,11 +166,21 @@ footer {
 
 /* Maximum Screen Width 575px */
 @media screen and (max-width: 575px) {
-  .flex {
+  .main {
+    line-height: 1.10;
+  }
+  header {
+    margin: 25px 25px 10px 25px;
+  }
+  .content {
     flex-direction: column;
+  }
+  .q {
+    max-width: 90%;
   }
   .hi-sc {
     justify-content: center;
     margin: 10% auto;
+    font-size: .8 rem;
   }
 }
