@@ -46,7 +46,6 @@ function countdown() {
     // when last question is done, stops timer and calls All Done
     if (questionNum === questionsArr.length) {
       clearInterval(timeInterval);
-      allDone();
     }
     // time left, decrement by 1
     else if (timeLeft > 0) {
@@ -58,6 +57,8 @@ function countdown() {
       timeLeft === 0;
       clearInterval(timeInterval);      
       timerEl.textContent = timeLeft;
+      qDisplayEl.remove();
+      allDone();
     }
   }, 1000);
 };
@@ -95,7 +96,6 @@ function displayQuestions() {
 function compareOpt2A(btnEl) {
   // change id of option button to integer for comparison
   optNum = parseInt(btnEl.id);
-
   // check for correct option selection and track time/score
   if (optNum === questionsArr[questionNum].a) {
     // set status of choice for correct
@@ -111,7 +111,6 @@ function compareOpt2A(btnEl) {
     // display 0 if timeLeft is 0 or less
     if (timeLeft < 1) {
     timeLeft = 0;
-    allDone();
     } else {
       timeLeft;
     }
@@ -164,6 +163,44 @@ var displayMsg = function(choiceStatus) {
       statusEl.remove();
     }, 1000);  
 };
+ 
+// All Done Display
+function allDone() {
+  var content = document.querySelector(".content");
+  startContentEl.remove();
+
+  // create elements and set attributes
+  var doneEl = document.createElement("div");
+    doneEl.className = "done";
+    doneEl.setAttribute("id", "done");
+  var doneTitleEl = document.createElement("h1");
+    doneTitleEl.innerText = "All Done!";
+  var pEl = document.createElement("P");
+    pEl.innerText = "Your final score is " + timeLeft + ".";
+  var submitEl = document.createElement("div");
+    submitEl.setAttribute("id", "submit")
+  var p2El = document.createElement("P");
+    p2El.innerText = "Enter initials: ";
+  var initInpEl = document.createElement("input");
+    initInpEl.setAttribute("type", "text");
+    initInpEl.setAttribute("id", "initials");
+    initInpEl.setAttribute("placeholder", "Your Initials Here!");
+    initInpEl.setAttribute("maxlength", "3");
+  var submitBtnEl = document.createElement ("button");
+    submitBtnEl.className = "btn submit-btn";
+    submitBtnEl.setAttribute("id", "submit-btn");
+    submitBtnEl.innerText = "Submit";
+
+  // append elements
+  content.appendChild(doneEl);
+  doneEl.appendChild(doneTitleEl);
+  doneEl.appendChild(pEl);
+  content.appendChild(submitEl);
+  submitEl.appendChild(p2El);
+  submitEl.appendChild(initInpEl);
+  submitEl.appendChild(submitBtnEl);
+};
+
 
 // CALL BUTTON FUNCTIONS
 function btnClick(buttonClicks) {
