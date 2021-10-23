@@ -6,6 +6,7 @@ var contentSectionEl = document.querySelector(".content");
 var startContentEl = document.getElementById("start");
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("start-timer");
+var doneEl = document.getElementById("done");
 
 // Question Variables
 var questionNum = 0;
@@ -118,7 +119,7 @@ function compareOpt2A(btnEl) {
   }
   next();
 };
-// console.log(choiceStatus);
+// console.log("user choice was ", choiceStatus);
 
 // Next Question
 function next() {
@@ -165,39 +166,77 @@ var displayMsg = function(choiceStatus) {
 
 // All Done Display
 function allDone() {
-  var content = document.querySelector(".content");
-  startContentEl.remove();
-
-  // create elements and set attributes
-  var doneEl = document.createElement("div");
-    doneEl.setAttribute("id", "done");
-  var doneTitleEl = document.createElement("h1");
-    doneTitleEl.innerText = "All Done!";
-  var pEl = document.createElement("P");
+  doneEl.removeAttribute("class");
+  var pDone = document.getElementById("ad-p");
+  // create element/attributes & append
+  var pEl = document.createElement("p");
     pEl.innerText = "Your final score is " + timeLeft + ".";
-  var submitEl = document.createElement("div");
-    submitEl.setAttribute("id", "submit")
-  var p2El = document.createElement("P");
-    p2El.innerText = "Enter initials:";
-  var initInpEl = document.createElement("input");
-    initInpEl.setAttribute("type", "text");
-    initInpEl.setAttribute("id", "initials");
-    initInpEl.setAttribute("placeholder", "Your Initials Here!");
-    initInpEl.setAttribute("maxlength", "3");
-  var submitBtnEl = document.createElement ("button");
-    submitBtnEl.setAttribute("id", "submit-btn");
-    submitBtnEl.innerText = "Submit";
-
-  // append elements
-  content.appendChild(doneEl);
-  doneEl.appendChild(doneTitleEl);
-  doneEl.appendChild(pEl);
-  doneEl.appendChild(submitEl);
-  submitEl.appendChild(p2El);
-  p2El.appendChild(initInpEl);
-  p2El.appendChild(submitBtnEl);
+    pDone.appendChild(pEl);
 };
 
+// Save highScores to Local Storage
+function saveValues() { 
+  // gets input element
+  let initEl = document.getElementById("initials");
+  // console.log("input initials", initEl.value);
+
+  // creates variable for highScores array
+  let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  console.log("parsed localStorage highScores", highScores);
+
+  // sets new object content (initials and score)
+  let newScoreObj = {lsInit: initEl.value, lsScore: timeLeft};
+  // console.log("new Score Obj", newScoreObj);
+
+  let matchLsInit = highScores.findIndex(highScores => highScores.lsInit === initEl.value)
+  console.log(matchLsInit);
+
+  // if input has no value, alert user
+  if (!initEl.value) {
+    alert("Please enter your initials and Re-Submit");
+
+  // localStorage highScore array has value 
+  } else if ((highScores > "") && (matchLsInit >= 0)) {
+    console.log("has data");
+
+    // set index for initials match: input vs highScores array
+    let index = highScores.findIndex(highScores => highScores.lsInit === initEl.value)
+    console.log("index of match", index);
+
+    // if new score is greater than older score, remove and replace
+    if ((highScores[index].lsScore) < newScoreObj.lsScore) {
+      console.log("high score is less than input")
+      console.log("index lsScore compare", index);
+      if (index >= 0) {highScores.splice(index, 1)} {    
+        highScores.push(newScoreObj);
+        console.log("new highScores", highScores);
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        hScDisplay();
+        }
+    
+    // if existing score is >= to new score, move to highScores display
+    } else {
+      console.log("high score greater than or equal to input")
+      console.log("highScores index", highScores[index]);
+      hScDisplay();
+    }
+
+  // if no value in array or new user   
+  } else if (matchLsInit < 0) {
+    console.log("new user");
+    highScores.push(newScoreObj);
+    console.log("new user Obj", newScoreObj);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    hScDisplay();
+    console.log("new user score", highScores);
+  }
+};
+
+// highScores display
+function hScDisplay() {
+  // display high-score.html
+  window.location.href = "high-score.html";    
+}
 
 // CALL BUTTON FUNCTIONS
 function btnClick(buttonClicks) {
@@ -210,13 +249,25 @@ function btnClick(buttonClicks) {
     countdown();
   }
 
-  // Checks answer based on option clicked
+  // checks answer based on option clicked
   else if (btnEl.matches(".opt-btn")) {
     compareOpt2A(btnEl);
   }
 
-  //
-//  else if (btnEl.matches("#submit-btn"))
+  // submits scores to localStorage
+  else if (btnEl.matches("#submit-btn")) {
+    saveValues();
+}
+
+  // starts quiz over
+  else if (btnEl.matches("#start-over")) {
+    window.location.href = "index.html";
+  }
+
+  // clears high scores in localStorage
+  else if (btnEl.matches("#clear-scores")) {
+    localStorage.clear()
+  }
 };
 
 // EVENT LISTENER

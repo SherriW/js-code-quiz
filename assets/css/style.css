@@ -134,6 +134,10 @@ footer h3 {
 /* Footer Styles End */
 
 /* All Done Styles Start */
+#done {
+  text-align: left;
+}
+
 #initials {
   margin: 10px;
 }
@@ -154,6 +158,12 @@ footer h3 {
   text-align: left;
 }
 /* High Scores Styles End */
+
+/* Utilities Styles Start */
+.hide {
+  display: none;
+}
+/* Utilities Styles End */
 /* BODY ENDS
 
 /* MEDIA QUERIES START */
