@@ -182,14 +182,14 @@ function saveValues() {
 
   // creates variable for highScores array
   let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  console.log("parsed localStorage highScores", highScores);
+  // console.log("parsed localStorage highScores", highScores);
 
   // sets new object content (initials and score)
   let newScoreObj = {lsInit: initEl.value, lsScore: timeLeft};
   // console.log("new Score Obj", newScoreObj);
 
   let matchLsInit = highScores.findIndex(highScores => highScores.lsInit === initEl.value)
-  console.log(matchLsInit);
+  // console.log(matchLsInit);
 
   // if input has no value, alert user
   if (!initEl.value) {
@@ -197,38 +197,38 @@ function saveValues() {
 
   // localStorage highScore array has value 
   } else if ((highScores > "") && (matchLsInit >= 0)) {
-    console.log("has data");
+    // console.log("has data");
 
     // set index for initials match: input vs highScores array
     let index = highScores.findIndex(highScores => highScores.lsInit === initEl.value)
-    console.log("index of match", index);
+    // console.log("index of match", index);
 
     // if new score is greater than older score, remove and replace
     if ((highScores[index].lsScore) < newScoreObj.lsScore) {
-      console.log("high score is less than input")
-      console.log("index lsScore compare", index);
+      // console.log("high score is less than input")
+      // console.log("index lsScore compare", index);
       if (index >= 0) {highScores.splice(index, 1)} {    
         highScores.push(newScoreObj);
-        console.log("new highScores", highScores);
+        // console.log("new highScores", highScores);
         localStorage.setItem("highScores", JSON.stringify(highScores));
         hScDisplay();
         }
     
     // if existing score is >= to new score, move to highScores display
     } else {
-      console.log("high score greater than or equal to input")
-      console.log("highScores index", highScores[index]);
+      // console.log("high score greater than or equal to input")
+      // console.log("highScores index", highScores[index]);
       hScDisplay();
     }
 
   // if no value in array or new user   
   } else if (matchLsInit < 0) {
-    console.log("new user");
+    // console.log("new user");
     highScores.push(newScoreObj);
-    console.log("new user Obj", newScoreObj);
+    // console.log("new user Obj", newScoreObj);
     localStorage.setItem("highScores", JSON.stringify(highScores));
     hScDisplay();
-    console.log("new user score", highScores);
+    // console.log("new user score", highScores);
   }
 };
 
