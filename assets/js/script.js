@@ -7,6 +7,7 @@ var startContentEl = document.getElementById("start");
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("start-timer");
 var doneEl = document.getElementById("done");
+const hScSectionEl = document.getElementById("hi-sc")
 
 // Question Variables
 var questionNum = 0;
@@ -81,7 +82,7 @@ function displayQuestions() {
   content.appendChild(qDisplayEl);
   qDisplayEl.appendChild(qh1El);
 
-  // loop over questions
+  // loop/iterate over questions
   for (var i = 0; i < questionsArr[questionNum].opt.length; i++) {
     // Display answer options
     var optBtnEl = document.createElement ("button");
@@ -119,6 +120,7 @@ function compareOpt2A(btnEl) {
   }
   next();
 };
+// console.log("user choice was ", choiceStatus);
 
 // Next Question
 function next() {
@@ -177,14 +179,18 @@ function allDone() {
 function saveValues() { 
   // gets input element
   let initEl = document.getElementById("initials");
+  // console.log("input initials", initEl.value);
 
   // creates variable for highScores array
   let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  console.log("parsed localStorage highScores", highScores);
 
   // sets new object content (initials and score)
   let newScoreObj = {lsInit: initEl.value, lsScore: timeLeft};
+  // console.log("new Score Obj", newScoreObj);
 
   let matchLsInit = highScores.findIndex(highScores => highScores.lsInit === initEl.value)
+  console.log(matchLsInit);
 
   // if input has no value, alert user
   if (!initEl.value) {
@@ -192,35 +198,50 @@ function saveValues() {
 
   // localStorage highScore array has value 
   } else if ((highScores > "") && (matchLsInit >= 0)) {
+    console.log("has data");
 
     // set index for initials match: input vs highScores array
     let index = highScores.findIndex(highScores => highScores.lsInit === initEl.value)
+    console.log("index of match", index);
 
     // if new score is greater than older score, remove and replace
     if ((highScores[index].lsScore) < newScoreObj.lsScore) {
+      console.log("high score is less than input")
+      console.log("index lsScore compare", index);
       if (index >= 0) {highScores.splice(index, 1)} {    
         highScores.push(newScoreObj);
+        console.log("new highScores", highScores);
         localStorage.setItem("highScores", JSON.stringify(highScores));
         hScDisplay();
         }
     
     // if existing score is >= to new score, move to highScores display
     } else {
+      console.log("high score greater than or equal to input")
+      console.log("highScores index", highScores[index]);
       hScDisplay();
     }
 
   // if no value in array or new user   
   } else if (matchLsInit < 0) {
+    console.log("new user");
     highScores.push(newScoreObj);
+    console.log("new user Obj", newScoreObj);
     localStorage.setItem("highScores", JSON.stringify(highScores));
     hScDisplay();
+    console.log("new user score", highScores);
   }
 };
 
 // highScores display
 function hScDisplay() {
   // display high-score.html
-  window.location.href = "high-score.html";    
+  window.location.href = "high-score.html";
+  
+  // creates variable for highScores array
+  let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  console.log("parsed localStorage highScores", highScores);
+  
 }
 
 // CALL BUTTON FUNCTIONS
@@ -242,16 +263,6 @@ function btnClick(buttonClicks) {
   // submits scores to localStorage
   else if (btnEl.matches("#submit-btn")) {
     saveValues();
-}
-
-  // starts quiz over
-  else if (btnEl.matches("#start-over")) {
-    window.location.href = "index.html";
-  }
-
-  // clears high scores in localStorage
-  else if (btnEl.matches("#clear-scores")) {
-    localStorage.clear()
   }
 };
 

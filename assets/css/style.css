@@ -11,7 +11,7 @@
   --primary: rgb(53,28,117);
   /* Secondary - button(s) color change / view high score links */
   --secondary: rgb(187, 125, 216); 
-  /* Tertiary - purpose */
+  /* Tertiary - background */
    --tertiary: rgb(216,210,231); 
   /* Dark - borders / dk font */
   --dark: black;  
@@ -39,6 +39,7 @@ body {
   font-size: 1.0rem;
   color: var(--dark);
 }
+
 /* 'BODY' STYLES END */
 
 /* GENERAL STYLES START */
@@ -150,7 +151,19 @@ footer h3 {
   max-width: 50%;
 }
 
-.score-list {
+#hs-h1 {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+#score-list {
+  width: 100%;
+  max-width: 300px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.list {
   background-color: var(--tertiary);
   width: 100%;
   max-width: 300px;
