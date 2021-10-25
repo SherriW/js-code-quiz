@@ -1,7 +1,7 @@
 # JavaScript 'Basics' Coding Quiz
 
 ## Description
-This application was built to be responsive to a variety of screen sizes/devices.  It provides a beginning javascript developer with a few coding questions and an opportunity to see javascript at work.  It includes a timer and multiple choice questions and provides the user their score and an opportunity to submit it to a high scores list.  Only the top 5 high scores are maintained, at this time, and each is for a unique user/set of initials.  New users will be added, as they reach the top 5 and current users, in the top 5 scores, may have their high score updated, should they surpass their previous score.  The application is built to wort the scores from highest to lowest and delete scores lower than the top 5 from local storage.  This application is not currently available for use across devices.
+This application provides a beginning javascript developer with a few coding questions and an opportunity to see javascript at work.  It includes a timer and multiple choice questions and provides the user their score and an opportunity to submit it to a high scores list.  Only the top 5 high scores are maintained, at this time, and each is for a unique user/set of initials.  New users will be added, as they reach the top 5 and current users, in the top 5 scores, may have their high score updated, should they surpass their previous score.  The application is built to wort the scores from highest to lowest and delete scores lower than the top 5 from local storage.  This application is not currently available for use across devices.
 
 ## Page Link
 
@@ -48,22 +48,28 @@ Main Page
 
 ## User Story
 
-AS A user
+AS A coding student or developer
 
-- I WANT
-  - SO THAT I can
+- I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+  - SO THAT I can gauge my progress conpared to my peers.
 
 ## CRITERIA
 
-- GIVEN THAT I need
-  - WHEN I
-    - THEN I
-  - WHEN I
-    - THEN I
-  - WHEN I
-    - THEN I
-  - WHEN I
-    - THEN I
+- GIVEN THAT I am taking a code quiz
+  - WHEN I click the start button
+    - THEN a timer starts and I am presented with a question
+  - WHEN I answer a question
+    - THEN I am presented with another questions
+  - WHEN I answer a question incorrectly
+    - THEN time is subtracted from the clock
+  - WHEN all questions are answered or the timer reaches 0
+    - THEN the quiz is over
+  - WHEN the quiz is over
+    - THEN I can save my initials and score
+  - WHEN friends take the quiz with me
+    - THEN the top 5 users' high scores are saved
+  - When a current user gets a better score and is in the top 5
+    - Then their score will be updated and displayed if they remain in the top 5.
 
 ## Installation
 
