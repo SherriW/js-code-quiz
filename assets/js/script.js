@@ -1,19 +1,19 @@
 // VARIABLES
 // Reference DOM Elements
-var bodyEl = document.querySelector("body");
-var mainSectionEl = document.querySelector("main");
-var contentSectionEl = document.querySelector(".content");
-var startContentEl = document.getElementById("start");
-var timerEl = document.getElementById("timer");
-var startBtn = document.getElementById("start-timer");
-var doneEl = document.getElementById("done");
+const bodyEl = document.querySelector("body");
+const mainSectionEl = document.querySelector("main");
+const contentSectionEl = document.querySelector(".content");
+const startContentEl = document.getElementById("start");
+const timerEl = document.getElementById("timer");
+const startBtn = document.getElementById("start-timer");
+const doneEl = document.getElementById("done");
 const hScSectionEl = document.getElementById("hi-sc")
 
 // Question Variables
-var questionNum = 0;
+let questionNum = 0;
 
 //question array variable
-var questionsArr = [ {
+let questionsArr = [ {
   q: "Commonly used data types DO Not Include:",
   opt: ["strings", "booleans", "alerts", "numbers"],
   a: 2
@@ -36,14 +36,14 @@ var questionsArr = [ {
 } ];
 
 // Timer Variables
-var timeLeft = questionsArr.length *15;
-var penalty = 15;
+let timeLeft = questionsArr.length *15;
+const penalty = 15;
 
 // FUNCTIONS
 // Coundown Timer - based on number of questions & time allowed per question
 function countdown() {
   // call function to be executed every 1 second
-  var timeInterval = setInterval(function() {
+  let timeInterval = setInterval(function() {
 
     // when last question is done, stops timer and calls All Done
     if (questionNum === questionsArr.length) {
@@ -68,11 +68,11 @@ function countdown() {
 // Display questions
 function displayQuestions() {
   // variable to reference content section
-  var content = document.querySelector(".content");
+  const content = document.querySelector(".content");
 
   // create elements for questions display
   qDisplayEl = document.createElement("div");
-  var qh1El = document.createElement("h1");
+  const qh1El = document.createElement("h1");
  
   //set element attributes
   qDisplayEl.className = "q";
@@ -83,9 +83,9 @@ function displayQuestions() {
   qDisplayEl.appendChild(qh1El);
 
   // loop/iterate over questions
-  for (var i = 0; i < questionsArr[questionNum].opt.length; i++) {
+  for (let i = 0; i < questionsArr[questionNum].opt.length; i++) {
     // Display answer options
-    var optBtnEl = document.createElement ("button");
+    let optBtnEl = document.createElement ("button");
       optBtnEl.className = "btn opt-btn";
       optBtnEl.setAttribute("id", i);
       optBtnEl.innerText = (i+1) + ". " + questionsArr[questionNum].opt[i];
@@ -100,7 +100,7 @@ function compareOpt2A(btnEl) {
   // check for correct option selection and track time/score
   if (optNum === questionsArr[questionNum].a) {
     // set status of choice for correct
-    var choiceStatus = true;
+    let choiceStatus = true;
     displayMsg(choiceStatus);
   }
   else {
@@ -141,9 +141,9 @@ function next() {
 };
 
 // Display Status of User Choice
-var displayMsg = function(choiceStatus) {
+let displayMsg = function(choiceStatus) {
   // set message
-  var msgTxt = choiceStatus
+  let msgTxt = choiceStatus
     if (choiceStatus) {
       msgTxt = "Correct!";
     } else {
@@ -151,8 +151,8 @@ var displayMsg = function(choiceStatus) {
     }
 
   // create elements and set attributes for message
-  var statusEl = document.createElement("footer");
-  var optMsgEl = document.createElement("h3");
+  const statusEl = document.createElement("footer");
+  const optMsgEl = document.createElement("h3");
     optMsgEl.innerText = msgTxt;
   
     // append elements
@@ -168,9 +168,9 @@ var displayMsg = function(choiceStatus) {
 // All Done Display
 function allDone() {
   doneEl.removeAttribute("class");
-  var pDone = document.getElementById("ad-p");
+  const pDone = document.getElementById("ad-p");
   // create element/attributes & append
-  var pEl = document.createElement("p");
+  const pEl = document.createElement("p");
     pEl.innerText = "Your final score is " + timeLeft + ".";
     pDone.appendChild(pEl);
 };
@@ -246,7 +246,7 @@ function hScDisplay() {
 
 // CALL BUTTON FUNCTIONS
 function btnClick(buttonClicks) {
-  var btnEl = buttonClicks.target;
+  let btnEl = buttonClicks.target;
 
   // remove div/display, start questions & timer
   if (btnEl.matches("#start-timer")) {

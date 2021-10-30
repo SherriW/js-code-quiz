@@ -44,7 +44,7 @@ if (highScores.length > MAX_LENGTH) {
 
 // CALL BUTTON FUNCTIONS
 function btnClick(buttonClicks) {
-  var btnEl = buttonClicks.target;
+  let btnEl = buttonClicks.target;
 
   // starts quiz over
   if (btnEl.matches("#start-over")) {
